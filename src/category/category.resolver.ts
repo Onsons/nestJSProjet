@@ -5,7 +5,7 @@ import { CreateCategoryDTO } from './dtos/create.category.dto';
 import { UpdateCategoryDTO } from './dtos/update.category.dto';
 import { CategoryModel } from './models/category.model';
 
-@Resolver()
+@Resolver(of => CategoryModel)
 export class CategoryResolver {
 
     constructor(private categoryService: CategoryService) {}
