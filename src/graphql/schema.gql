@@ -9,19 +9,40 @@ type ProductModel {
   price: Float!
 }
 
+type CategoryModel {
+  id: ID!
+  name: String!
+  description: String!
+}
+
 type Query {
   product(id: String!): ProductModel!
   products: [ProductModel!]!
+  categories: [CategoryModel!]!
+  category(id: String!): CategoryModel!
 }
 
 type Mutation {
   create(data: ProductInput!): ProductModel!
   update(data: ProductInput!, id: String!): ProductModel!
   delete(id: String!): ProductModel!
+  addCategory(category: CreateCategoryDTO!): CategoryModel!
+  updateCategory(category: UpdateCategoryDTO!, id: String!): CategoryModel!
+  deleteCategory(id: String!): CategoryModel!
 }
 
 input ProductInput {
   title: String!
   description: String!
   price: Float!
+}
+
+input CreateCategoryDTO {
+  name: String!
+  description: String!
+}
+
+input UpdateCategoryDTO {
+  name: String
+  description: String
 }
